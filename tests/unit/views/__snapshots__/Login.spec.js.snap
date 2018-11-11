@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login.vue renders Login view properly 1`] = `
+<div class="login component">
+  <p class="login-instructions">Please log in:</p>
+  <div class="login-btns"><button title="Log in with Google" class="button login-btn third-party google">Login with Google</button> <button title="Log in with Facebook" class="button login-btn third-party facebook">Continue with Facebook</button> <button title="Log in with Twitter" class="button login-btn third-party twitter">Login with Twitter</button> <button title="Log in with GitHub" class="button login-btn third-party github">Login with GitHub</button></div>
+  <p class="login-credits">This DEMO app uses <a href="https://firebase.google.com/" target="_blank">Google Firebase</a> Authentication &amp; Databases.<br>NOTE: To test multiple sign-in methods, first ensure that each method is associated with a different email address.</p>
+</div>
+`;
