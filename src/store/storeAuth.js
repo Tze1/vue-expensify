@@ -16,6 +16,7 @@ export default {
     login (state, user) {
       state.user = {
         ...state.user,
+        uid: user.uid,
         displayName: user.providerData[0].displayName,
         photoURL: user.providerData[0].photoURL,
       }

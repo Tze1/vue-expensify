@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
+import Dashboard from './views/Dashboard'
 import Home from './views/Home.vue'
 import NotFound from './views/NotFound';
 
@@ -20,6 +21,14 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
       meta: {
         requiresAuth: true,
       },

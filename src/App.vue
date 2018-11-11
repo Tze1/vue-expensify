@@ -18,7 +18,7 @@ export default {
   name: 'App',
   data () {
     return {
-      appTitle: 'Vue-App'
+      appTitle: 'Vue-Expensify'
     }
   },
   computed: mapState({
@@ -31,12 +31,13 @@ export default {
     const vm = this;
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        vm.$store.dispatch('login', user).
+        vm.$store.dispatch('login', user);
+        vm.$store.dispatch('setExpenses').
           then(() => {
             if (vm.$route.query.redirect) {
               vm.$router.push(vm.$route.query.redirect);
             } else if (vm.$route.name === 'Login') {
-              vm.$router.push('/home');
+              vm.$router.push('/dashboard');
             }
           });
       } else {
@@ -68,7 +69,7 @@ export default {
       } else {
         // redirect Login view to Home if user's logged-in.
         if (to.name === 'Login' && this.user) {
-          next('/home');
+          next('/dashboard');
         } else {
           next();
         }

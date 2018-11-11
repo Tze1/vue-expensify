@@ -2,7 +2,7 @@
   <header class="header component">
     <div class="masthead"><h1>{{ appTitle ? appTitle : 'VueJS App' }}</h1></div>
     <div v-show="userLoggedIn" class="nav">
-      <router-link to="/home">Home</router-link> |
+      <router-link to="/dashboard">Dashboard</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <div v-if="user" class="auth">
