@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expense.vue renders Expense component properly 1`] = `
+<div class="expense component"><span class="expense-createdat">12/31/1969</span> <span class="expense-description">Gum</span> <span class="expense-amount">$1.95</span>
+  <router-link-stub to="/edit/:1">edit</router-link-stub>
+</div>
+`;
