@@ -2,10 +2,6 @@
 export default {
   state: {
     user: undefined
-    // user: {
-    //   displayName: 'Tze Lei',
-    //   photoURL: '/img/avatar-default.png'
-    // }
   },
   getters: {
     userLoggedIn: state => {
@@ -13,7 +9,7 @@ export default {
     },
   },
   mutations: {
-    login (state, user) {
+    LOGIN (state, user) {
       state.user = {
         ...state.user,
         uid: user.uid,
@@ -21,16 +17,16 @@ export default {
         photoURL: user.providerData[0].photoURL,
       }
     },
-    logout (state) {
+    LOGOUT (state) {
       state.user = undefined;
     }
   },
   actions: {
     login ({ commit }, user) {
-      return commit('login', user);
+      return commit('LOGIN', user);
     },
     logout ({ commit }) {
-      return commit('logout');
+      return commit('LOGOUT');
     },
   },
 };
