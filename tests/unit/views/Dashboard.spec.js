@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import Dashboard from '@/views/Dashboard'
+import Dashboard from '@/views/Dashboard';
+import moment from 'moment';
 
 const $store = {
   state: {
@@ -8,6 +9,12 @@ const $store = {
         displayName: 'Test User',
         photoUrl: '/img/avatar-default.png',
       },
+    },
+    filters: {
+      text: '',
+      startDate: moment().subtract(30, 'days'),
+      endDate: undefined,
+      sortBy: 'date',
     },
   },
   getters: {

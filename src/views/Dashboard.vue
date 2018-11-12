@@ -1,12 +1,14 @@
 <template>
   <div v-if="userLoggedIn" class="dashboard component">
     <h2 class="dashboard-title">Dashboard</h2>
+    <ExpenseListFilters :filters="filters" />
     <ExpenseList />
   </div>
 </template>
 
 <script>
   import { mapState } from 'vuex';
+  import ExpenseListFilters from '../components/ExpenseListFilters';
   import ExpenseList from '../components/ExpenseList'
 
   export default {
@@ -16,8 +18,10 @@
         return this.$store.getters.userLoggedIn;
       },
       user: state => state.auth.user,
+      filters: state => state.filters,
     }),
     components: {
+      ExpenseListFilters,
       ExpenseList
     },
   };

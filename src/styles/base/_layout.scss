@@ -79,6 +79,15 @@ html {
       padding: $space-lg;
     }
 
+    input::placeholder,
+    textarea::placeholder {
+      color: $gray3;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
     .button {  // not using .btn, in case Bootstrap gets integrated later.
       background-color: darken($green, 30%);
       border: 2px solid darken($green, 10%);
@@ -133,10 +142,5 @@ html {
         }
       }
     }
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color: $gray3;
   }
 }
