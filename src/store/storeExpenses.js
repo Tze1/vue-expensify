@@ -1,52 +1,99 @@
 // This state module becomes state.expenses at store-root (see ./store.js).
 import db, { arrayFromSnapshot } from '../firebase/firebase';
+import { set as vSet } from 'Vue';
 
 export default {
   state: [],
+
   mutations: {
-    setExpenses (state, expenses) {
+    SET_EXPENSES (state, expenses) {
       expenses.forEach((expense) => {
         state.push(expense);
       });
     },
-    addExpense (state, expense) {
+    ADD_EXPENSE (state, expense) {
       state.push(expense);
     },
-    editExpense (state, id, editedExpense) {
+    EDIT_EXPENSE (state, payload) {
+      // When filtering an array, you MUST use Vue.set on the object,
+      // in order to trigger state-update.
+      // See Change Detection Caveats under Reactivity in Depth
+      // at https://vuejs.org/v2/guide/reactivity.html#Change-Detection-Caveats
+      const { editedExpenseId, editedExpense } = payload;
       state = state.map((expense) => {
-        if (expense.id === id) {
-          return {
-            ...expense,
-            ...editedExpense
-          };
+        if (expense.id === editedExpenseId) {
+          vSet(expense, 'createdAt', editedExpense.createdAt);
+          vSet(expense, 'description', editedExpense.description);
+          vSet(expense, 'amount', editedExpense.amount);
+          vSet(expense, 'note', editedExpense.note);
+          return expense;
         } else {
           return expense;
         }
-      })
+      });
     },
-    removeExpense (state, id) {
-      state = state.filter(expense => expense.id !== id);
-    }
+    REMOVE_EXPENSE (state, id) {
+      // Use array.splice to trigger state-update.
+      // See observed Mutation Methods
+      // at https://vuejs.org/v2/guide/list.html#Mutation-Methods
+      const idx = state.findIndex(expense => expense.id === id);
+      state = state.splice(idx, 1);
+    },
   },
+
   actions: {
     setExpenses (context) {
       const uid = context.rootState.auth.user.uid;
-      db.ref(`users/${uid}/expenses`).once('value').
+      return db.ref(`users/${uid}/expenses`).once('value').
         then((snapshot) => {
-          return context.commit('setExpenses', arrayFromSnapshot(snapshot));
+          return context.commit('SET_EXPENSES', arrayFromSnapshot(snapshot));
         }).
         catch((err) => {
-          console.error('ERROR: Could not fetch expenses data:', err);
+          console.error('ERROR: Could not read expenses data:', err);
         });
     },
-    addExpense ({ commit }, expense) {
-      return commit('addExpense', expense);
+    addExpense (context, expense = {}) {
+      const uid = context.rootState.auth.user.uid;
+      const {
+        createdAt = 0,
+        description = '',
+        amount = 0,
+        note = '',
+      } = expense;
+      const newExpense = { createdAt, description, amount, note };
+
+      return db.ref(`users/${uid}/expenses`).push(newExpense).
+        then((ref) => {
+          return context.commit('ADD_EXPENSE', {
+            id: ref.key,
+            ...newExpense,
+          });
+        }).
+        catch((err) => {
+          console.error('ERROR: Could not create expense data:', err);
+        });
     },
-    editExpense ({ commit }, id, editedExpense) {
-      return commit('editExpense', id, editedExpense);
+    editExpense (context, editedExpenseId, editedExpense) {
+      const uid = context.rootState.auth.user.uid;
+
+      return db.ref(`users/${uid}/expenses/${editedExpenseId}`).set(editedExpense).
+        then(() => {
+          return context.commit('EDIT_EXPENSE', {editedExpenseId, editedExpense});
+        }).
+        catch((err) => {
+          console.error('ERROR: Could not update expense data:', err);
+        });
     },
-    removeExpense ({ commit }, id) {
-      return commit('removeExpense', id);
+    removeExpense (context, id) {
+      const uid = context.rootState.auth.user.uid;
+
+      return db.ref(`users/${uid}/expenses/${id}`).remove().
+        then(() => {
+          return context.commit('REMOVE_EXPENSE', id);
+        }).
+        catch((err) => {
+          console.error('ERROR: Could not delete expense data:', err);
+        });
     },
   },
 };
