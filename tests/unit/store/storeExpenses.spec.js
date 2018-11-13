@@ -3,21 +3,45 @@ import {
   loggedInStateAuth,
 } from '../../fixtures/testStateAuth';
 import testExpenses from '../../fixtures/testExpenses';
+import { defaultFilters } from '../../fixtures/testFilters';
 import db from '@/firebase/firebase';
 
-const { mutations, actions } = storeExpenses;
+const { getters, mutations, actions } = storeExpenses;
 const defaultRootState = {
   auth: loggedInStateAuth,
   expenses: [],
+};
+const loadedRootState = {
+  auth: loggedInStateAuth,
+  expenses: testExpenses,
+  filters: defaultFilters,
 };
 const commitStub = jest.fn();
 const defaultContext = {
   rootState: defaultRootState,
   commit: commitStub,
 };
+// clone testExpenses and pop clone.
 const myTestExpenses = testExpenses.filter((expense) => !!expense);
 const myTestExpense = myTestExpenses.pop();  // for adding/editing.
 // myTestExpenses now have only the 1st two expenses from original testExpenses.
+
+// getters
+describe('filteredExpenses getter', () => {
+  it('returns filtered expense properly', () => {
+    const received = getters.filteredExpenses(
+      testExpenses,
+      undefined,
+      loadedRootState
+    );
+
+    expect(received).toEqual([
+      { ...testExpenses[2] },
+      { ...testExpenses[0] }
+    ]);
+  })
+});
+
 
 // mutations
 describe('SET_EXPENSES mutation', () => {

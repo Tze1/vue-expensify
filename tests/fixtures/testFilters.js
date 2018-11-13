@@ -3,7 +3,7 @@ import moment from 'moment';
 const defaultFilters = {
   text: '',
   sortBy: 'date',
-  startDate: moment('2018-10-11').subtract(30, 'days'),
+  startDate: moment(0),
   endDate: undefined
 };
 
