@@ -9,6 +9,7 @@ export default {
   getters: {
     filteredExpenses: (state, getters, rootState) => {
       const {text, startDate, endDate, sortBy} = rootState.filters;
+      console.log('[storeExpenses filteredExpenses] filters: text: ' + text);
 
       return state.filter(expense => {
         const createdAtMoment = moment(expense.createdAt);

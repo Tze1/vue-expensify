@@ -4,6 +4,7 @@ import {
 } from '../../fixtures/testStateAuth';
 import testExpenses from '../../fixtures/testExpenses';
 import { defaultFilters } from '../../fixtures/testFilters';
+import moment from 'moment';
 import db from '@/firebase/firebase';
 
 const { getters, mutations, actions } = storeExpenses;
@@ -28,7 +29,8 @@ const myTestExpense = myTestExpenses.pop();  // for adding/editing.
 
 // getters
 describe('filteredExpenses getter', () => {
-  it('returns filtered expense properly', () => {
+  it('returns default-filtered expenses properly', () => {
+    // defaultFilters have only startDate (moment(0)).
     const received = getters.filteredExpenses(
       testExpenses,
       undefined,
@@ -36,10 +38,110 @@ describe('filteredExpenses getter', () => {
     );
 
     expect(received).toEqual([
-      { ...testExpenses[2] },
-      { ...testExpenses[0] }
+      testExpenses[2],
+      testExpenses[0],
+      testExpenses[1]
     ]);
-  })
+  });
+
+  it('returns text-filtered expenses properly', () => {
+    const filters2 = {
+      text: 'rent',
+      startDate: undefined,
+      endDate: undefined,
+      sortBy: 'date',
+    };
+    const loadedRootState2 = {
+      ...loadedRootState,
+      filters: filters2,
+    };
+
+    const received = getters.filteredExpenses(
+      testExpenses,
+      undefined,
+      loadedRootState2
+    );
+
+    expect(received).toEqual([
+      testExpenses[1]
+    ]);
+  });
+
+  // no need to test startDate-filtered -- already in default-filtered test above.
+
+  it('returns endDate-filtered expenses properly', () => {
+    const filters3 = {
+      text: '',
+      startDate: undefined,
+      endDate: moment(0),
+      sortBy: 'date',
+    };
+    const loadedRootState3 = {
+      ...loadedRootState,
+      filters: filters3,
+    };
+
+    const received = getters.filteredExpenses(
+      testExpenses,
+      undefined,
+      loadedRootState3
+    );
+
+    expect(received).toEqual([
+      testExpenses[0],
+      testExpenses[1]
+    ]);
+  });
+
+  it('returns data-range-filtered expenses properly', () => {
+    const filters4 = {
+      text: '',
+      startDate: moment(0).subtract(3, 'days'),
+      endDate: moment(0).add(3, 'days'),
+      sortBy: 'date',
+    };
+    const loadedRootState4 = {
+      ...loadedRootState,
+      filters: filters4,
+    };
+
+    const received = getters.filteredExpenses(
+      testExpenses,
+      undefined,
+      loadedRootState4
+    );
+
+    expect(received).toEqual([
+      testExpenses[0]
+    ]);
+  });
+
+  // No need to test sorted by date -- already in default-filtered test above.
+
+  it('returns expenses sorted by amount properly', () => {
+    const filters5 = {
+      text: '',
+      startDate: undefined,
+      endDate: undefined,
+      sortBy: 'amount',
+    };
+    const loadedRootState5 = {
+      ...loadedRootState,
+      filters: filters5,
+    };
+
+    const received = getters.filteredExpenses(
+      testExpenses,
+      undefined,
+      loadedRootState5
+    );
+
+    expect(received).toEqual([
+      testExpenses[1],
+      testExpenses[2],
+      testExpenses[0]
+    ]);
+  });
 });
 
 
