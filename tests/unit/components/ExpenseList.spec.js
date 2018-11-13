@@ -14,8 +14,11 @@ const $store = {
   },
   getters: {
     userLoggedIn: state => {
-      return (state.user !== undefined);
+      return (state.auth.user !== undefined);
     },
+    filteredExpenses: state => {
+      return state.expenses;
+    }
   },
 };
 const wrapper = shallowMount(ExpenseList, {

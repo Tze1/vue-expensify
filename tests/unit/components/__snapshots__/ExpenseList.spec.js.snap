@@ -2,10 +2,6 @@
 
 exports[`ExpenseList.vue renders ExpenseList component properly 1`] = `
 <div class="expenselist component">
-  <div>
-    <expense-stub expense="[object Object]"></expense-stub>
-    <expense-stub expense="[object Object]"></expense-stub>
-    <expense-stub expense="[object Object]"></expense-stub>
-  </div>
+  <div></div>
 </div>
 `;

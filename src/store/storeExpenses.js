@@ -1,9 +1,38 @@
 // This state module becomes state.expenses at store-root (see ./store.js).
+import moment from 'moment';
 import db, { arrayFromSnapshot } from '../firebase/firebase';
-import { set as vSet } from 'Vue';
+import Vue from 'vue';
 
 export default {
   state: [],
+
+  getters: {
+    filteredExpenses: (state, getters, rootState) => {
+      const {text, startDate, endDate, sortBy} = rootState.filters;
+
+      return state.filter(expense => {
+        const createdAtMoment = moment(expense.createdAt);
+        const textMatch = text ?
+          expense.description.toLowerCase().includes(text.toLowerCase()) :
+          true;
+        const startDateMatch = startDate ?
+          startDate.isSameOrBefore(createdAtMoment, 'day') :
+          true;
+        const endDateMatch = endDate ?
+          endDate.isSameOrAfter(createdAtMoment, 'day') :
+          true;
+
+        return textMatch && startDateMatch && endDateMatch;
+      }).sort((a, b) => {
+        switch (sortBy) {
+          case 'date':
+            return a.createdAt < b.createdAt ? 1 : -1;
+          case 'amount':
+            return a.amount < b.amount ? 1 : -1;
+        }
+      });
+    },
+  },
 
   mutations: {
     SET_EXPENSES (state, expenses) {
@@ -22,10 +51,10 @@ export default {
       const { editedExpenseId, editedExpense } = payload;
       state = state.map((expense) => {
         if (expense.id === editedExpenseId) {
-          vSet(expense, 'createdAt', editedExpense.createdAt);
-          vSet(expense, 'description', editedExpense.description);
-          vSet(expense, 'amount', editedExpense.amount);
-          vSet(expense, 'note', editedExpense.note);
+          Vue.set(expense, 'createdAt', editedExpense.createdAt);
+          Vue.set(expense, 'description', editedExpense.description);
+          Vue.set(expense, 'amount', editedExpense.amount);
+          Vue.set(expense, 'note', editedExpense.note);
           return expense;
         } else {
           return expense;
