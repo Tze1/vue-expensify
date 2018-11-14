@@ -9,24 +9,31 @@
         v-model="filters.text"
         @input="onTextInput"
       />
-      <Datepicker
-        name="startDate"
-        format="MM/dd/yyyy"
-        :value="startDateValue"
-        @selected="onStartDateChange"
-        @cleared="onStartDateChange"
-        input-class="datepciker-input"
-        :clear-button="true"
-      />
-      <Datepicker
-        name="endDate"
-        format="MM/dd/yyyy"
-        :value="endDateValue"
-        @selected="onEndDateChange"
-        @cleared="onEndDateChange"
-        input-class="datepciker-input"
-        :clear-button="true"
-      />
+      <div class="expenselistfilters-daterange">
+        <Datepicker
+          :clear-button="true"
+          :value="startDateValue"
+          @selected="onStartDateChange"
+          @cleared="onStartDateChange"
+          format="MM/dd/yyyy"
+          input-class="datepciker-input"
+          name="startDate"
+          placeholder="start date"
+        />
+        <span class="expenselistfilters-daterange-label">
+          <span>&lt;&mdash; </span>range <span>&mdash;&gt;</span>
+        </span>
+        <Datepicker
+          :clear-button="true"
+          :value="endDateValue"
+          @cleared="onEndDateChange"
+          @selected="onEndDateChange"
+          format="MM/dd/yyyy"
+          input-class="datepciker-input"
+          name="endDate"
+          placeholder="end date"
+        />
+      </div>
       <select
         name="sortBy"
         v-model="filters.sortBy"
@@ -131,9 +138,28 @@
         flex-flow: row nowrap;
         justify-content: space-between;
 
-        > input,
-        > select {
+        > * {
           margin-bottom: 0;
+        }
+      }
+
+      .expenselistfilters-daterange {
+        align-items: baseline;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+
+        .expenselistfilters-daterange-label {
+          padding-left: $space-sm;
+          padding-right: $space-sm;
+
+          span {
+            display: none;
+
+            @include mq("tablet-wide") {
+              display: inline-block;
+            }
+          }
         }
       }
     }

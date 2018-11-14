@@ -64,7 +64,12 @@
       padding-right: .8rem;
 
       &.expense-description {
-        flex-grow: 1;
+        @include text-truncate;
+        flex: 1 1 auto;
+
+        @include mq("tablet") {
+          flex: 1 0 auto;
+        }
       }
 
       &:last-child {

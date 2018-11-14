@@ -26,6 +26,14 @@ $breakpoints: (
   }
 }
 
+// text-truncate
+// Usage: @include text-truncate
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Z-indices
 // Update $z-indices for any new stacked components.
 /* Usage:
