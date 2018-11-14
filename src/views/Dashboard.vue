@@ -2,6 +2,7 @@
   <div v-if="userLoggedIn" class="dashboard component">
     <h2 class="dashboard-title">Dashboard</h2>
     <ExpenseListFilters :filters="filters" />
+    <ExpensesSummary />
     <ExpenseList />
   </div>
 </template>
@@ -9,6 +10,7 @@
 <script>
   import { mapState } from 'vuex';
   import ExpenseListFilters from '../components/ExpenseListFilters';
+  import ExpensesSummary from '../components/ExpensesSummary';
   import ExpenseList from '../components/ExpenseList'
 
   export default {
@@ -22,6 +24,7 @@
     }),
     components: {
       ExpenseListFilters,
+      ExpensesSummary,
       ExpenseList
     },
   };

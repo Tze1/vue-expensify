@@ -8,6 +8,12 @@ export default {
     sortBy: 'date',
   },
 
+  getters: {
+    expensesFiltered: state => {
+      return !!state.text || !!state.startDate || !!state.endDate;
+    },
+  },
+
   mutations: {
     setFilterText (state, text) {
       state.text = text;

@@ -9,7 +9,6 @@ export default {
   getters: {
     filteredExpenses: (state, getters, rootState) => {
       const {text, startDate, endDate, sortBy} = rootState.filters;
-      console.log('[storeExpenses filteredExpenses] filters: text: ' + text);
 
       return state.filter(expense => {
         const createdAtMoment = moment(expense.createdAt);
@@ -33,6 +32,17 @@ export default {
         }
       });
     },
+    filteredCount: (state, getters) => {
+      const fltrdExpenses = getters.filteredExpenses;
+      return fltrdExpenses.length;
+    },
+    filteredSum: (state, getters) => {
+      const fltrdExpenses = getters.filteredExpenses;
+      const fltrdAmounts = fltrdExpenses.map(expense => expense.amount);
+      const reducer = (sum, currValue) => sum + currValue;
+      
+      return fltrdAmounts.reduce(reducer, 0);
+    }
   },
 
   mutations: {

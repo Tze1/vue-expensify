@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExpensesSummary renders ExpensesSummary component properly 1`] = `
+<div class="expensessummary component">
+  <p><span class="expensessummary-showing">Showing&nbsp;</span> <span class="expensessummary-count"></span>&nbsp;expense(s)
+    <span class="expensessummary-filtered">(filtered)&nbsp;</span>&nbsp;totalling
+    <span class="expensessummary-amount">$0.00</span></p>
+</div>
+`;

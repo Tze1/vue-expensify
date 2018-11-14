@@ -4,6 +4,7 @@ exports[`Dashboard.vue renders Dashboard view properly 1`] = `
 <div class="dashboard component">
   <h2 class="dashboard-title">Dashboard</h2>
   <expenselistfilters-stub filters="[object Object]"></expenselistfilters-stub>
+  <expensessummary-stub></expensessummary-stub>
   <expenselist-stub></expenselist-stub>
 </div>
 `;
