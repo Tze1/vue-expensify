@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Dashboard from './views/Dashboard'
-import Home from './views/Home.vue'
+import AddExpense from './views/AddExpense';
 import NotFound from './views/NotFound';
 
 Vue.use(Router)
@@ -18,17 +18,17 @@ export default new Router({
       component: Login,
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home,
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
       meta: {
         requiresAuth: true,
       },
     },
     {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard,
+      path: '/addexpense',
+      name: 'AddExpense',
+      component: AddExpense,
       meta: {
         requiresAuth: true,
       },

@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Home.vue renders Home view properly 1`] = `
-<div class="home component">
-  <h2>Home</h2>
-  <p>This is the Home view.</p>
-  <helloworld-stub msg="Hello, Test"></helloworld-stub>
-</div>
-`;
