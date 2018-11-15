@@ -79,6 +79,14 @@ export default {
       const idx = state.findIndex(expense => expense.id === id);
       state = state.splice(idx, 1);
     },
+    RESET_EXPENSES (state) {
+      // Since SET_EXPENSES use array.push to trigger state-update,
+      // state needs to be explicitly wiped on Logout.
+      const initialStateLength = state.length;
+      for (let a = 0; a < initialStateLength; a++) {
+        state.pop();
+      }
+    },
   },
 
   actions: {
@@ -135,6 +143,9 @@ export default {
         catch((err) => {
           console.error('ERROR: Could not delete expense data:', err);
         });
+    },
+    resetExpenses ({ commit }) {
+      return commit('RESET_EXPENSES');
     },
   },
 };

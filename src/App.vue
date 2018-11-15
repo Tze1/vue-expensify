@@ -81,6 +81,7 @@ export default {
       firebase.auth().signOut();
       this.$store.dispatch('logout').
         then(() => {
+          this.$store.dispatch('resetExpenses');
           this.$router.push('/');
         });
     }
