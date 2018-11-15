@@ -3,7 +3,7 @@
     <div class="masthead"><h1>{{ appTitle ? appTitle : 'VueJS App' }}</h1></div>
     <div v-show="userLoggedIn" class="nav">
       <router-link to="/dashboard">Dashboard</router-link> |
-      <router-link to="/addexpense">Add Expense</router-link>
+      <router-link to="/add">Add Expense</router-link>
     </div>
     <div v-if="user" class="auth">
       <span class="username">{{ user ? user.displayName : '' }}</span>

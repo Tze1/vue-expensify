@@ -7,7 +7,7 @@ exports[`Header.vue renders Header component properly 1`] = `
   </div>
   <div class="nav">
     <router-link-stub to="/dashboard">Dashboard</router-link-stub> |
-    <router-link-stub to="/addexpense">Add Expense</router-link-stub>
+    <router-link-stub to="/add">Add Expense</router-link-stub>
   </div>
   <div class="auth"><span class="username">Test User</span> <img src="/img/avatar-default.png" class="avatar"> <button class="button logout-btn exit">Logout</button></div>
 </header>

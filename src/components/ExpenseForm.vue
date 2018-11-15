@@ -17,23 +17,20 @@
         name="description"
         placeholder="Description"
         autoFocus
-        :value="description"
-        @change="onDescriptionChange"
+        v-model="description"
       />
       <input
         class="expenseform-amount"
         type="text"
         name="amount"
         placeholder="Amount"
-        :value="amount"
-        @change="onAmountChange"
+        v-model="amount"
       />
       <textarea
         class="expenseform-note"
         name="note"
         placeholder="Add a note.  (optional)"
-        :value="note"
-        @change="onNoteChange"
+        v-model="note"
       />
       <button class="expenseform-submit button" type="submit">
         {{ expense ? 'Update' : 'Save' }} Expense
@@ -75,39 +72,49 @@
         required: false,
       },
     },
+    watch: {
+      expense: function () {
+        /* After any manual page-refresh, if an expense does get passed in for edit, populate form-fields (set data) with expense-info. */
+        const expense = this.expense;
+        if (expense) {
+          this.date = moment(expense.createdAt).toDate();
+          this.description = expense.description;
+          this.amount = (expense.amount / 100).toString();
+          this.note = expense.note;
+          console.log('[ExpenseForm watch] expense loaded:', expense);
+        }
+      },
+    },
     methods: {
       onDateChange (e) {
         this.date = e;
       },
-      onDescriptionChange (e) {
-        const value = e.target.value;
-        if (value) {
-          this.description = value;
-          if (this.amount) {
-            this.errorMessage = '';
-          }
-        }
-      },
-      onAmountChange (e) {
-        const value = e.target.value;
-        if (value) {
-          this.amount = value;
-          if (this.description) {
-            this.errorMessage = '';
-          }
-        }
-      },
-      onNoteChange (e) {
-        this.note = e.target.value;
-      },
+      // onDescriptionChange (e) {
+      //   const value = e.target.value;
+      //   if (value) {
+      //     this.description = value;
+      //     if (this.amount) {
+      //       this.errorMessage = '';
+      //     }
+      //   }
+      // },
+      // onAmountChange (e) {
+      //   const value = e.target.value;
+      //   if (value) {
+      //     this.amount = value;
+      //     if (this.description) {
+      //       this.errorMessage = '';
+      //     }
+      //   }
+      // },
+      // onNoteChange (e) {
+      //   this.note = e.target.value;
+      // },
       onSubmit (e) {
         const vm = this;
         e.preventDefault();  // don't navigate!
 
-        if (!vm.description || !vm.amount) {
-          // Set error message.
-          vm.errorMessage = 'ERROR: Missing description or amount.';
-        } else {
+        if (!!vm.description && !!vm.amount) {
           // Clear error message and call parent submit method (from props).
           vm.errorMessage = '';
           vm.submitExpense({
@@ -116,6 +123,9 @@
             amount: parseFloat(vm.amount * 100),
             note: vm.note,
           });
+        } else {
+          // Set error message.
+          vm.errorMessage = 'ERROR: Missing description or amount.';
         }
       },
     },

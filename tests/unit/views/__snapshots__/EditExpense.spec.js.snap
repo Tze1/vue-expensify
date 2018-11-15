@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditExpense.vue renders EditExpense view properly 1`] = `
+<div class="editexpense component">
+  <h2 class="editexpense-title">Edit Expense</h2>
+  <expenseform-stub submitexpense="function () { [native code] }" expense="[object Object]"></expenseform-stub>
+  <div class="editexpense-actions"><button class="editexpense-cancel button exit">Cancel</button>&nbsp;
+    <button class="editexpense-remove button danger">Remove Expense</button></div>
+</div>
+`;

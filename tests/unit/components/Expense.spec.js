@@ -4,7 +4,7 @@ import Expense from '@/components/Expense';
 
 describe('Expense.vue', () => {
   const testExpense = testExpenses[0];
-  const testEditLinkPath = '/edit/:' + testExpenses[0].id;
+  const testEditLinkPath = '/edit/' + testExpenses[0].id;
   const wrapper = shallowMount(Expense, {
     stubs: [ 'router-link' ],
     propsData: {

@@ -1,23 +1,46 @@
-import { shallowMount } from '@vue/test-utils'
-import AddExpense from '@/views/AddExpense'
-import testExpenses from '../../fixtures/testExpenses'
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import Vuex from 'vuex';
+import AddExpense from '@/views/AddExpense';
+import testExpenses from '../../fixtures/testExpenses';
+
+const localVue = createLocalVue();
+localVue.use(Vuex);
 
 describe('AddExpense.vue', () => {
-  const wrapper = shallowMount(AddExpense);
-  const submitExpenseStub = jest.fn();
-
-  wrapper.setMethods({
-    submitExpense: submitExpenseStub,
-  });
 
   it('renders AddExpense view properly', () => {
+    const wrapper = shallowMount(AddExpense);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('calls submitExpense method properly with pass expense object', () => {
-    wrapper.vm.submitExpense(testExpenses[2]);
+  it('dispatches addExpense action properly', () => {
+    const dispatchStub = jest.fn();
+    const pushStub = jest.fn();
+    const $store = {
+      state: {},
+      dispatch: dispatchStub,
+    };
+    const $router = {
+      push: pushStub,
+    };
 
-    expect(submitExpenseStub).toHaveBeenCalledWith(testExpenses[2]);
+    const testExpense = {
+      createdAt: testExpenses[0].createdAt,
+      description: testExpenses[0].description,
+      amount: testExpenses[0].amount,
+      note: testExpenses[0].note,
+    };
+    const wrapper = shallowMount(AddExpense, {
+      localVue,
+      mocks: {
+        $store,
+        $router,
+      },
+    });
+
+    wrapper.vm.addExpense(testExpense);
+
+    expect(dispatchStub).toHaveBeenCalledWith('addExpense', testExpense);
+    expect(pushStub).toHaveBeenCalledWith('/dashboard');
   });
-})
-
+});

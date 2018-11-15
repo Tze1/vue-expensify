@@ -21,7 +21,7 @@
     },
     computed: {
       editExpenseLink: function () {
-        return '/edit/:' + this.expense.id;
+        return '/edit/' + this.expense.id;
       },
       createdAtDisplay: function () {
         return moment(this.expense.createdAt).format('MM/DD/YYYY');

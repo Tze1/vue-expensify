@@ -59,13 +59,13 @@ export default {
       // in order to trigger state-update.
       // See Change Detection Caveats under Reactivity in Depth
       // at https://vuejs.org/v2/guide/reactivity.html#Change-Detection-Caveats
-      const { editedExpenseId, editedExpense } = payload;
+      const { id, updates } = payload;
       state = state.map((expense) => {
-        if (expense.id === editedExpenseId) {
-          Vue.set(expense, 'createdAt', editedExpense.createdAt);
-          Vue.set(expense, 'description', editedExpense.description);
-          Vue.set(expense, 'amount', editedExpense.amount);
-          Vue.set(expense, 'note', editedExpense.note);
+        if (expense.id === id) {
+          Vue.set(expense, 'createdAt', updates.createdAt);
+          Vue.set(expense, 'description', updates.description);
+          Vue.set(expense, 'amount', updates.amount);
+          Vue.set(expense, 'note', updates.note);
           return expense;
         } else {
           return expense;
@@ -113,12 +113,13 @@ export default {
           console.error('ERROR: Could not create expense data:', err);
         });
     },
-    editExpense (context, editedExpenseId, editedExpense) {
+    editExpense (context, payload) {
       const uid = context.rootState.auth.user.uid;
+      const { id, updates } = payload;
 
-      return db.ref(`users/${uid}/expenses/${editedExpenseId}`).set(editedExpense).
+      return db.ref(`users/${uid}/expenses/${id}`).set(updates).
         then(() => {
-          return context.commit('EDIT_EXPENSE', {editedExpenseId, editedExpense});
+          return context.commit('EDIT_EXPENSE', { id, updates });
         }).
         catch((err) => {
           console.error('ERROR: Could not update expense data:', err);

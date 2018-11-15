@@ -167,8 +167,8 @@ describe('ADD_EXPENSE mutation', () => {
 describe('EDIT_EXPENSE mutation', () => {
   it('edits existing expense in the state', () => {
     let state = [{ ...myTestExpenses[0] }];
-    const editedExpenseId = myTestExpenses[0].id;
-    const editedExpense = {
+    const id = myTestExpenses[0].id;
+    const updates = {
       createdAt: myTestExpenses[0].createdAt,
       description: 'new test description',
       amount: myTestExpenses[0].amount,
@@ -177,13 +177,13 @@ describe('EDIT_EXPENSE mutation', () => {
 
     mutations.EDIT_EXPENSE(
       state,
-      { editedExpenseId, editedExpense }
+      { id, updates }
     );
 
     expect(state).toEqual([
       {
-        id: editedExpenseId,
-        ...editedExpense
+        id,
+        ...updates
       }
     ]);
   });
@@ -241,19 +241,19 @@ describe('expenses actions', () => {
   });
 
   it('editExpense action: commits EDIT_EXPENSE mutation with edited expense', async () => {
-    const editedExpenseId = myTestExpenses[0].id;
-    const editedExpense = {
+    const id = myTestExpenses[0].id;
+    const updates = {
       createdAt: myTestExpenses[0].createdAt,
       description: 'new test description',
       amount: myTestExpenses[0].amount,
       note: 'new test note'
     };
 
-    await actions.editExpense(defaultContext, editedExpenseId, editedExpense);
+    await actions.editExpense(defaultContext, { id, updates });
 
     expect(commitStub).toHaveBeenCalledWith(
       'EDIT_EXPENSE',
-      { editedExpenseId, editedExpense }
+      { id, updates }
     );
   });
 
