@@ -5,6 +5,6 @@ exports[`NotFound.vue renders NotFound view properly 1`] = `
   <h2>Not Found</h2>
   <p>Sorry! The resource you requested was not found.</p>
   <p>Please go back to:</p>
-  <router-link-stub to="/home" tag="a" event="click">Home</router-link-stub>
+  <router-link-stub to="/dashboard" tag="a" event="click">Dashboard</router-link-stub>
 </div>
 `;

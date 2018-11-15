@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExpenseList.vue renders ExpenseList component properly 1`] = `
+<div class="expenselist component">
+  <div></div>
+</div>
+`;

@@ -6833,6 +6833,11 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
+numeral@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
+  integrity sha1-StCAk21EPCVhrtnyGX7//iX05QY=
+
 nwsapi@^2.0.7:
   version "2.0.9"
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.0.9.tgz#77ac0cdfdcad52b6a1151a84e73254edc33ed016"
@@ -9644,6 +9649,11 @@ vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
   integrity sha512-mFbcWoDIJi0w0Za4emyLiW72Jae0yjANHbCVquMKijcavBGypqlF7zHRgMa5k4sesdv7hv2rB4JPdZfR+TPfhQ==
+
+vuejs-datepicker@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/vuejs-datepicker/-/vuejs-datepicker-1.5.4.tgz#dacdb5eb5ef44342c67cb59b93a0d5da9c1809b3"
+  integrity sha512-AVzgu3pb/fF/Sj3qu8YPnp7KhtsXkm8TSnBEcyYsWb1bMJr5FdPCxuIzISgw5kq0It7HkVJUGXQ4CiCwq9hhww==
 
 vuex@^3.0.1:
   version "3.0.1"

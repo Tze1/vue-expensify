@@ -4,7 +4,7 @@
     <p>Sorry!  The resource you requested was not found.</p>
     <p>Please go back to:</p>
     <router-link v-if="!userLoggedIn" to="/">Login</router-link>
-    <router-link v-else to="/home">Home</router-link>
+    <router-link v-else to="/dashboard">Dashboard</router-link>
   </div>
 </template>
 

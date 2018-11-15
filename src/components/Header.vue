@@ -2,13 +2,13 @@
   <header class="header component">
     <div class="masthead"><h1>{{ appTitle ? appTitle : 'VueJS App' }}</h1></div>
     <div v-show="userLoggedIn" class="nav">
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/dashboard">Dashboard</router-link> |
+      <router-link to="/add">Add Expense</router-link>
     </div>
     <div v-if="user" class="auth">
       <span class="username">{{ user ? user.displayName : '' }}</span>
       <img :src="getAvatarUrl()" class="avatar"/>
-      <button @click="startLogout" class="button logout-btn exit">Logout</button>
+      <button @click="startLogout" class="button logout-btn exit">Log out</button>
     </div>
   </header>
 </template>
@@ -48,7 +48,7 @@
   @import '../styles/app.scss';
 
   .header.component {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
@@ -62,26 +62,26 @@
 
     > div {
       flex: 0 0 auto;
-      padding: $space-xs;
+      padding: 0 $space-xs $space-xs 0;
       vertical-align: baseline;
 
       &:first-child {
+        padding-left: 0;
         padding-top: 0;
       }
 
       &:last-child {
+        align-self: flex-end;
         padding-bottom: 0;
+        padding-right: 0;
+        text-align: right;
       }
 
       @include mq("tablet") {
         padding: 0 $space-sm;
 
-        &:first-child {
-          padding-left: 0;
-        }
-
         &:last-child {
-          padding-right: 0;
+          align-self: initial;
         }
       }
     }  // > div
@@ -111,6 +111,13 @@
 
     .auth {
       text-align: right;
+      margin-top: -5.4rem;
+      width: 100%;
+
+      @include mq("tablet") {
+        margin-top: 0;
+        width: auto;
+      }
 
       > * {
         margin-left: $space-sm;
@@ -121,7 +128,12 @@
       }
 
       .username {
+        display: none;
         font-weight: bold;
+
+        @include mq("tablet") {
+          display: inline-block;
+        }
       }
 
       .avatar {
@@ -133,6 +145,7 @@
 
       .button.exit {
         margin-right: 0;
+        width: auto;
       }
     }
   }  // header

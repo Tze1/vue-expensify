@@ -1,5 +1,4 @@
 import { shallowMount } from '@vue/test-utils'
-import sinon from 'sinon';
 import Login from '@/views/Login'
 
 describe('Login.vue', () => {

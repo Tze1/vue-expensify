@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddExpense.vue renders AddExpense view properly 1`] = `
+<div class="addexpense component">
+  <h2 class="addexpense-title">Add Expense</h2>
+  <expenseform-stub submitexpense="function () { [native code] }"></expenseform-stub> <button class="addexpense-cancel button exit">Cancel</button>
+</div>
+`;

@@ -1,0 +1,21 @@
+// overrides for 3rd-party widgets/plugins/components
+#app {
+  .vdp-datepicker {
+    color: $black;
+    min-width: 12rem;
+
+    @include mq("tablet") {
+      margin-bottom: 0;
+    }
+
+    input[type="text"] {
+      cursor: pointer;
+      padding: 1rem;
+      width: 10rem;
+    }
+
+    &__clear-button {
+      color: $white;
+    }
+  }
+}
