@@ -81,7 +81,6 @@
           this.description = expense.description;
           this.amount = (expense.amount / 100).toString();
           this.note = expense.note;
-          console.log('[ExpenseForm watch] expense loaded:', expense);
         }
       },
     },
@@ -89,27 +88,6 @@
       onDateChange (e) {
         this.date = e;
       },
-      // onDescriptionChange (e) {
-      //   const value = e.target.value;
-      //   if (value) {
-      //     this.description = value;
-      //     if (this.amount) {
-      //       this.errorMessage = '';
-      //     }
-      //   }
-      // },
-      // onAmountChange (e) {
-      //   const value = e.target.value;
-      //   if (value) {
-      //     this.amount = value;
-      //     if (this.description) {
-      //       this.errorMessage = '';
-      //     }
-      //   }
-      // },
-      // onNoteChange (e) {
-      //   this.note = e.target.value;
-      // },
       onSubmit (e) {
         const vm = this;
         e.preventDefault();  // don't navigate!
@@ -143,19 +121,7 @@
       > * {
         display: block;
         margin-bottom: $space-sm;
-
-        &.expenseform-datepicker {
-
-          // .DateInput--with-caret.DateInput--open-down::after,
-          // .DateInput--with-caret.DateInput--open-down::before {
-          //   top: 47px;
-          // }
-
-          // .SingleDatePicker__picker--open-down {
-          //   top: 57px;
-          // }
-        }
-      }  // > *
+      }
 
       > input,
       > textarea {

@@ -72,7 +72,6 @@
     },
     methods: {
       onTextInput (e) {
-        console.log('[ExpenseListFilters onTextInput event:', e);
         this.$store.dispatch('setFilterText', e.target.value);
       },
       onStartDateChange (e) {

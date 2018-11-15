@@ -33,7 +33,8 @@
         this.$router.push('/dashboard');
       },
       onRemove () {
-        console.log('[EditExpense onRemove] Method called.');
+        this.$store.dispatch('removeExpense', this.$route.params.id);
+        this.$router.push('/dashboard');
       },
       onCancel () {
         this.$router.replace('/dashboard');

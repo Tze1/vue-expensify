@@ -34,12 +34,12 @@ describe('EditExpense.vue', () => {
   });
 
   it('dispatches editExpense action properly', () => {
-    const id = testExpenses[0].id
+    const id = $route.params.id;  // '1' (testExpenses[0])
     const updates = {
       createdAt: testExpenses[0].createdAt,
-      description: testExpenses[0].description,
+      description: 'updated description',
       amount: testExpenses[0].amount,
-      note: testExpenses[0].note,
+      note: 'updated note',
     };
     const wrapper = shallowMount(EditExpense, {
       localVue,
@@ -54,5 +54,21 @@ describe('EditExpense.vue', () => {
 
     expect(dispatchStub).toHaveBeenCalledWith('editExpense', { id, updates });
     expect(pushStub).toHaveBeenCalledWith('/dashboard');
+  });
+
+  it('dispatches removeExpense action properly on remove-button click', () => {
+    const id = $route.params.id;
+    const wrapper = shallowMount(EditExpense, {
+      localVue,
+      mocks: {
+        $store,
+        $router,
+        $route
+      }
+    });
+
+    wrapper.find('.editexpense-remove').trigger('click');
+
+    expect(dispatchStub).toHaveBeenCalledWith('removeExpense', id);
   });
 });
