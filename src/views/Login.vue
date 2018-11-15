@@ -24,25 +24,29 @@
       startLoginGoogle: function () {
         firebase.auth().signInWithPopup(googleAuthProvider).
           catch((err) => {
-            console.error('[Login] Firebase auth error: %s', err);
+            // eslint-disable-next-line
+            console.error('Firebase auth error: %s', err);
           });
       },
       startLoginFacebook: function () {
         firebase.auth().signInWithPopup(facebookAuthProvider).
           catch((err) => {
-            console.error('[Login] Firebase auth error: %s', err);
+            // eslint-disable-next-line
+            console.error('Firebase auth error: %s', err);
           });
       },
       startLoginTwitter: function () {
         firebase.auth().signInWithPopup(twitterAuthProvider).
           catch((err) => {
-            console.error('[Login] Firebase auth error: %s', err);
+            // eslint-disable-next-line
+            console.error('Firebase auth error: %s', err);
           });
       },
       startLoginGithub: function () {
         firebase.auth().signInWithPopup(githubAuthProvider).
           catch((err) => {
-            console.error('[Login] Firebase auth error: %s', err);
+            // eslint-disable-next-line
+            console.error('Firebase auth error: %s', err);
           });
       }
     }
