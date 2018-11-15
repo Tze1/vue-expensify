@@ -8,7 +8,7 @@
     <div v-if="user" class="auth">
       <span class="username">{{ user ? user.displayName : '' }}</span>
       <img :src="getAvatarUrl()" class="avatar"/>
-      <button @click="startLogout" class="button logout-btn exit">Logout</button>
+      <button @click="startLogout" class="button logout-btn exit">Log out</button>
     </div>
   </header>
 </template>

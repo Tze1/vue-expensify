@@ -104,7 +104,7 @@ export default {
     @include mq("tablet-wide") {
       margin-left: auto;
       margin-right: auto;
-      max-width: 1034px;
+      max-width: 980px;
     }
   }
 }
