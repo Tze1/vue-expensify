@@ -5,9 +5,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "start": "node server/server.js",
     "test": "cross-env NODE_ENV=test vue-cli-service test:unit --forceExit"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "firebase": "^5.5.7",
     "moment": "^2.22.2",
     "numeral": "^2.0.6",
