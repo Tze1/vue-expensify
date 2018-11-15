@@ -1,6 +1,12 @@
 {
   "name": "vue-expensify",
   "version": "0.0.1",
+  "author": {
+    "name": "Tze-chiu Lei",
+    "email": "tclei2009@gmail.com",
+    "url": "http://tze1.com/"
+  },
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -9,6 +15,7 @@
     "test": "cross-env NODE_ENV=test vue-cli-service test:unit --forceExit"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.5.0",
     "express": "^4.16.4",
     "firebase": "^5.5.7",
     "moment": "^2.22.2",

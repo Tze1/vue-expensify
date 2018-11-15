@@ -97,6 +97,7 @@ export default {
           return context.commit('SET_EXPENSES', arrayFromSnapshot(snapshot));
         }).
         catch((err) => {
+          // eslint-ignore-next-line
           console.error('ERROR: Could not read expenses data:', err);
         });
     },
@@ -118,6 +119,7 @@ export default {
           });
         }).
         catch((err) => {
+          // eslint-ignore-next-line
           console.error('ERROR: Could not create expense data:', err);
         });
     },
@@ -130,6 +132,7 @@ export default {
           return context.commit('EDIT_EXPENSE', { id, updates });
         }).
         catch((err) => {
+          // eslint-ignore-next-line
           console.error('ERROR: Could not update expense data:', err);
         });
     },
@@ -141,6 +144,7 @@ export default {
           return context.commit('REMOVE_EXPENSE', id);
         }).
         catch((err) => {
+          // eslint-ignore-next-line
           console.error('ERROR: Could not delete expense data:', err);
         });
     },
