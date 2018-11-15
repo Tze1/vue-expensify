@@ -79,6 +79,14 @@ html {
       padding: $space-lg;
     }
 
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-size: 1.4rem;
+    }
+
     input::placeholder,
     textarea::placeholder {
       color: $gray3;

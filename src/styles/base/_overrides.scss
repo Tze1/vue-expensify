@@ -4,10 +4,6 @@
     color: $black;
     min-width: 12rem;
 
-    @include mq("tablet") {
-      margin-bottom: 0;
-    }
-
     input[type="text"] {
       cursor: pointer;
       padding: 1rem;

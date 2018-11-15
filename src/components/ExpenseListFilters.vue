@@ -142,6 +142,12 @@
         }
       }
 
+      .vdp-datepicker {
+        @include mq("tablet") {
+          margin-bottom: 0;
+        }
+      }
+
       .expenselistfilters-daterange {
         align-items: baseline;
         display: flex;
