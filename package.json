@@ -10,6 +10,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "heroku-postinstall": "yarn build --env production",
     "lint": "vue-cli-service lint",
     "start": "node server/server.js",
     "test": "cross-env NODE_ENV=test vue-cli-service test:unit --forceExit"
