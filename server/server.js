@@ -12,7 +12,7 @@ app.use(history({
   verbose: true
 }));
 app.get('/', function (req, res) {
-  res.render(path.join(__dirname + '../dist/index.html'));
+  res.render(path.join(__dirname + '..', 'dist', 'index.html'));
 });
 app.listen(port);
 
