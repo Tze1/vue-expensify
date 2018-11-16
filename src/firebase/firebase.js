@@ -1,9 +1,8 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import * as firebase from 'firebase';
 
-// config injected by webpack custom-plugin, which reads
-// .env.test, .env.development, or .env.production depending on process.env.NODE_ENV.
+// Set up production Firebase app-config (NODE_ENV = 'production') on your public webserver.
+// local configs (NODE_ENV = 'test' or 'development') injected by webpack custom-plugin,
+//  which reads .env.test or .env.development.  Not injected on public server.
 // See webpack config options in ../vue.config.js.
 // The .env.* files are untracked in Git, so you'll need to create them.
 // Set up your Firebase web account, environment-specific projects & database,

@@ -11,7 +11,7 @@
 // @ is an alias to /src
 import { mapState } from 'vuex';
 import Header from '@/components/Header.vue'
-import firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/auth';
 
 export default {
