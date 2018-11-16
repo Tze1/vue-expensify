@@ -1,6 +1,5 @@
 // For production server & Heroku start.
 var express = require('express');
-var history = require('connect-history-api-fallback');
 var path = require('path');
 var serveStatic = require('serve-static');
 var app = express();
@@ -11,10 +10,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(serveStatic(path.join(__dirname, '..', 'dist')));
-app.use(history({
-  disableDotRule: true,
-  verbose: true
-}));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 })
