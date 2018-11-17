@@ -1,14 +1,15 @@
 <template>
   <div class="login component">
-    <p class="login-instructions">Please log in:</p>
+    <p class="login-byline">by <a href="http://tze1.com/" title="Tze-chiu Lei's portfolio site" target="_blank">Tze-chiu Lei</a></p>
+    <p class="login-instructions">Please log in [no sign-up needed]:</p>
     <div class="login-btns">
       <button class="button login-btn third-party google" @click="startLoginGoogle" title="Log in with Google">Login with Google</button>
       <button class="button login-btn third-party facebook" @click="startLoginFacebook" title="Log in with Facebook">Continue with Facebook</button>
       <button class="button login-btn third-party twitter" @click="startLoginTwitter" title="Log in with Twitter">Login with Twitter</button>
       <button class="button login-btn third-party github" @click="startLoginGithub" title="Log in with GitHub">Login with GitHub</button>
     </div>
-    <p className="login-credits">This DEMO app uses <a href="https://firebase.google.com/" target="_blank">Google Firebase</a> Authentication & Databases.<br />NOTE: If testing different sign-in providers, beware that each creates a separate account.  OAuth accounts-linking is beyond the scope of this demo.</p>
-    <p className="login-appinfo">See source-code and unit-tests in the <a href="https://github.com/tze1/vue-expensify" target="_blank">GitHub project</a>.</p>
+    <p class="login-credits">This DEMO app uses <a href="https://firebase.google.com/" target="_blank">Google Firebase</a> Authentication & Databases.<br />NOTE: If testing different sign-in providers, beware that each creates a separate account.  OAuth accounts-linking is beyond the scope of this demo.</p>
+    <p class="login-appinfo">See source-code and unit-tests in the <a href="https://github.com/tze1/vue-expensify" target="_blank">GitHub project</a>.</p>
   </div>
 </template>
 
@@ -59,18 +60,14 @@
 
 .login.component {
   .login-title {
+    color: $red;
     margin-bottom: 0;
   }
 
   .login-byline {
     font-size: 1.2rem;
     margin-bottom: $space-sm;
-    margin-top: 0;
-  }
-  .login-preamble .highlight {
-    color: $orange;
-    font-size: 2rem;
-    font-weight: 900;
+    margin-top: -2.5rem;
   }
 
   .login-btns {
