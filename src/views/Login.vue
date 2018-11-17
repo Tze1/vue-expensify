@@ -68,6 +68,10 @@
     font-size: 1.2rem;
     margin-bottom: $space-sm;
     margin-top: -2.5rem;
+
+    @include mq("tablet") {
+      margin-top: -1.8rem;
+    }
   }
 
   .login-btns {
