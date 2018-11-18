@@ -1,6 +1,5 @@
+// TODO: Move text-related stuff off to separate partial.
 html {
-  font-size: 10px;
-
   body {
     background-color: $black;
     background-image: url("/img/bg.jpg");
@@ -9,7 +8,7 @@ html {
     background-size: auto;
     color: $white;
     font-family: $font-family-default;
-    font-size: 1.6rem;
+    font-size: $font-size-default;
     height: 100%;
     line-height: 1.25;
     margin: 0;
@@ -84,7 +83,7 @@ html {
     optgroup,
     select,
     textarea {
-      font-size: 1.4rem;
+      font-size: $font-size-sm;
     }
 
     input::placeholder,
