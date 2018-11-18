@@ -16,6 +16,7 @@ Vue.config.productionTip = false
 */
 export const eventBus = new Vue();
 
+// Bootstrap stylesheets @imported into app.scss.
 Vue.use(BootstrapVue);
 
 new Vue({
