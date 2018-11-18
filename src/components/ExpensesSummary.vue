@@ -34,7 +34,7 @@
 
   .expensessummary.component {
     > p {
-      font-size: 1.4rem;
+      font-size: $font-size-sm;
       margin-bottom: $space-sm;
       margin-top: $space-xs;
 

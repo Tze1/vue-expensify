@@ -65,12 +65,12 @@
   }
 
   .login-byline {
-    font-size: 1.2rem;
+    font-size: $font-size-xs;
     margin-bottom: $space-sm;
-    margin-top: -2.5rem;
+    margin-top: -1.5625rem;
 
     @include mq("tablet") {
-      margin-top: -1.8rem;
+      margin-top: -1.125rem;
     }
   }
 
@@ -95,7 +95,7 @@
     padding: 0;
 
     @include mq("tablet-wide") {
-      margin: 0 2rem 0 0;
+      margin: 0 1.25rem 0 0;
     }
 
     &:last-of-type {
@@ -107,7 +107,7 @@
     }
 
     &:hover {
-      box-shadow: 0 0 1rem 0 #c66;
+      box-shadow: 0 0 .625rem 0 #c66;
     }
 
     &.google {
@@ -133,7 +133,7 @@
 
   .login-credits,
   .login-appinfo {
-    font-size: 1.4rem;
+    font-size: $font-size-sm;
   }
 }
 </style>

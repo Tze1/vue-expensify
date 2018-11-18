@@ -101,7 +101,7 @@
 <style scoped lang="scss">
   @import '../styles/app.scss';
   .expenselistfilters.component {
-      font-size: 1.4rem;
+      font-size: $font-size-sm;
 
     .expenselistfilters-title {
       margin-bottom: $space-xs;
@@ -111,7 +111,7 @@
     .expenselistfilters-controls {
       display: flex;
       flex-flow: column;
-      font-size: 1.4rem;
+      font-size: $font-size-sm;
 
       > * {
         margin-bottom: $space-xs;
@@ -124,12 +124,12 @@
       > input,
       > select {
         border: 0;
-        font-size: 1.4rem;
+        font-size: $font-size-sm;
         overflow: hidden;
         padding: $space-xs;
 
         > option {
-          font-size: 1.4rem;
+          font-size: $font-size-sm;
         }
       }
 
