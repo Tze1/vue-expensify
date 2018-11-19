@@ -89,8 +89,8 @@
     .masthead {
       h1 {
         background: transparent url('/img/logo.png') left 50% no-repeat;
-        background-size: 2.8rem 2.8rem;
-        padding-left: 4rem;
+        background-size: 1.75rem 1.75rem;
+        padding-left: 2.5rem;
         line-height: 1;
         margin: 0;
       }
@@ -111,7 +111,7 @@
 
     .auth {
       text-align: right;
-      margin-top: -5.4rem;
+      margin-top: -3.375rem;
       width: 100%;
 
       @include mq("tablet") {
@@ -138,9 +138,9 @@
 
       .avatar {
         border-radius: 50%;
-        height: 3.2rem;
+        height: 2rem;
         vertical-align: middle;
-        width: 3.2rem;
+        width: 2rem;
       }
 
       .button.exit {

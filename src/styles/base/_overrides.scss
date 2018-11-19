@@ -2,16 +2,27 @@
 #app {
   .vdp-datepicker {
     color: $black;
-    min-width: 12rem;
+    min-width: 7.5rem;
 
     input[type="text"] {
       cursor: pointer;
-      padding: 1rem;
-      width: 10rem;
+      padding: $space-xs;
+      width: 6.25rem;
     }
 
     &__clear-button {
       color: $white;
+    }
+  }
+
+  // boostrap-vue
+  .modal {
+    background-color: rgba($black, .65);
+
+    .modal-dialog {
+      .modal-content {
+        color: $black;
+      }
     }
   }
 }

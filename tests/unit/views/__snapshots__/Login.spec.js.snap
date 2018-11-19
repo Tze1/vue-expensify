@@ -2,8 +2,10 @@
 
 exports[`Login.vue renders Login view properly 1`] = `
 <div class="login component">
-  <p class="login-instructions">Please log in:</p>
+  <p class="login-byline">by <a href="http://tze1.com/" title="Tze-chiu Lei's portfolio site" target="_blank">Tze-chiu Lei</a></p>
+  <p class="login-instructions">Please log in [no sign-up needed]:</p>
   <div class="login-btns"><button title="Log in with Google" class="button login-btn third-party google">Login with Google</button> <button title="Log in with Facebook" class="button login-btn third-party facebook">Continue with Facebook</button> <button title="Log in with Twitter" class="button login-btn third-party twitter">Login with Twitter</button> <button title="Log in with GitHub" class="button login-btn third-party github">Login with GitHub</button></div>
-  <p class="login-credits">This DEMO app uses <a href="https://firebase.google.com/" target="_blank">Google Firebase</a> Authentication &amp; Databases.<br>NOTE: To test multiple sign-in methods, first ensure that each method is associated with a different email address.</p>
+  <p class="login-credits">This DEMO app uses <a href="https://firebase.google.com/" target="_blank">Google Firebase</a> Authentication &amp; Databases.<br>NOTE: If testing different sign-in providers, beware that each creates a separate account. OAuth accounts-linking is beyond the scope of this demo.</p>
+  <p class="login-appinfo">See source-code and unit-tests in the <a href="https://github.com/tze1/vue-expensify" target="_blank">GitHub project</a>.</p>
 </div>
 `;

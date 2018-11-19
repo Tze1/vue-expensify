@@ -130,7 +130,7 @@
         width: calc(100% - #{$space-lg});
 
         @include mq("tablet") {
-          min-width: 38rem;
+          min-width: 23.75rem;
           width: auto;
         }
 
