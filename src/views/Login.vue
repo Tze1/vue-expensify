@@ -77,6 +77,7 @@
   .login-btns {
     display: flex;
     flex-flow: column nowrap;
+    margin-bottom: $space-md;
 
     @include mq("tablet-wide") {
       flex-flow: row nowrap;
