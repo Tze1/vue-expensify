@@ -14,4 +14,15 @@
       color: $white;
     }
   }
+
+  // boostrap-vue
+  .modal {
+    background-color: rgba($black, .65);
+
+    .modal-dialog {
+      .modal-content {
+        color: $black;
+      }
+    }
+  }
 }
