@@ -2,7 +2,7 @@
   <header class="header component">
     <div class="masthead"><h1>{{ appTitle ? appTitle : 'VueJS App' }}</h1></div>
     <div v-show="userLoggedIn" class="nav">
-      <router-link to="/dashboard">Dashboard</router-link> |
+      <router-link to="/dashboard">Dashboard</router-link>|
       <router-link to="/add">Add Expense</router-link>
     </div>
     <div v-if="user" class="auth">
@@ -102,6 +102,16 @@
       }
 
       a {
+        margin: 0 $space-xs;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
         &.router-link-active {
           font-weight: bold;
           text-decoration: none;
@@ -111,7 +121,7 @@
 
     .auth {
       text-align: right;
-      margin-top: -3.375rem;
+      margin-top: -3.8rem;
       width: 100%;
 
       @include mq("tablet") {
@@ -120,7 +130,11 @@
       }
 
       > * {
-        margin-left: $space-sm;
+        margin-left: $space-xs;
+
+        @include mq("tablet") {
+          margin-left: $space-sm;
+        }
 
         &:first-child {
           margin-left: 0;
