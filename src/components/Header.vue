@@ -161,6 +161,6 @@
         margin-right: 0;
         width: auto;
       }
-    }
+    } // .auth
   }  // header
 </style>

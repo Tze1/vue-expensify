@@ -95,7 +95,8 @@ html {
       cursor: pointer;
     }
 
-    .button {  // not using .btn, in case Bootstrap gets integrated later.
+    .button,
+    .editexpense-confirm .btn {
       background-color: darken($green, 30%);
       border: 2px solid darken($green, 10%);
       color: $white;
@@ -119,7 +120,8 @@ html {
         width: auto;
       }
 
-      &.exit {
+      &.exit,
+      &.btn-secondary {
         background-color: $gray2;
         border-color: $gray4;
   
@@ -139,7 +141,8 @@ html {
         }
       }
 
-      &.danger {
+      &.danger,
+      &.btn-danger {
         background-color: darken($red, 30%);
         border-color: darken($red, 10%);
 
