@@ -6,16 +6,6 @@ import store from './store/store';
 
 Vue.config.productionTip = false
 
-/* App-wide custom-event Vue-instance.
-* Usage:
-*	import { eventBus } from '<path to main.js>';
-*	Emitter (in any method): eventBus.$emit('eventName', eventData);
-*	Listener (in life-cycle method): created () {
-*	    eventBus.$on('eventName', (eventData) => { ... });
-*   },
-*/
-export const eventBus = new Vue();
-
 // Bootstrap stylesheets @imported into app.scss.
 Vue.use(BootstrapVue);
 
