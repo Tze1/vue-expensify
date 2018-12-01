@@ -1,7 +1,8 @@
 // This state module becomes state.expenses at store-root (see ./store.js).
+import Vue from 'vue';
 import moment from 'moment';
 import db, { arrayFromSnapshot } from '../firebase/firebase';
-import Vue from 'vue';
+import { eventBus } from '../main';
 
 export default {
   state: [],
@@ -53,6 +54,10 @@ export default {
     },
     ADD_EXPENSE (state, expense) {
       state.push(expense);
+      eventBus.$emit('showDismissableAlert', {
+        content: 'Expense Added.',
+        variant: 'success',
+      });
     },
     EDIT_EXPENSE (state, payload) {
       // When filtering an array, you MUST use Vue.set on the object,
@@ -71,6 +76,10 @@ export default {
           return expense;
         }
       });
+      eventBus.$emit('showDismissableAlert', {
+        content: 'Expense Edited.',
+        variant: 'success',
+      });
     },
     REMOVE_EXPENSE (state, id) {
       // Use array.splice to trigger state-update.
@@ -78,6 +87,10 @@ export default {
       // at https://vuejs.org/v2/guide/list.html#Mutation-Methods
       const idx = state.findIndex(expense => expense.id === id);
       state = state.splice(idx, 1);
+      eventBus.$emit('showDismissableAlert', {
+        content: 'Expense Removed.',
+        variant: 'success',
+      });
     },
     RESET_EXPENSES (state) {
       // Since SET_EXPENSES use array.push to trigger state-update,
