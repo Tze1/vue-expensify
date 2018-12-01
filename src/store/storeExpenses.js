@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import moment from 'moment';
 import db, { arrayFromSnapshot } from '../firebase/firebase';
-import { eventBus } from '../main';
+import EventBus from '../components/EventBus';
 
 export default {
   state: [],
@@ -54,7 +54,7 @@ export default {
     },
     ADD_EXPENSE (state, expense) {
       state.push(expense);
-      eventBus.$emit('showDismissableAlert', {
+      EventBus.$emit('showDismissableAlert', {
         content: 'Expense Added.',
         variant: 'success',
       });
@@ -76,7 +76,7 @@ export default {
           return expense;
         }
       });
-      eventBus.$emit('showDismissableAlert', {
+      EventBus.$emit('showDismissableAlert', {
         content: 'Expense Edited.',
         variant: 'success',
       });
@@ -87,7 +87,7 @@ export default {
       // at https://vuejs.org/v2/guide/list.html#Mutation-Methods
       const idx = state.findIndex(expense => expense.id === id);
       state = state.splice(idx, 1);
-      eventBus.$emit('showDismissableAlert', {
+      EventBus.$emit('showDismissableAlert', {
         content: 'Expense Removed.',
         variant: 'success',
       });

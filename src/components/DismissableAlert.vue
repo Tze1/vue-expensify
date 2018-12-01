@@ -22,7 +22,7 @@
   *   variant: '<info | success | danger | warning>', // optional (defaults to 'info')
   * });
   */
-  import { eventBus } from '../main';
+  import EventBus from './EventBus';
   import bAlert from 'bootstrap-vue/es/components/alert/alert';
 
   const defaultState = {
@@ -37,7 +37,7 @@
       return defaultState;
     },
     created: function () {
-      eventBus.$on('showDismissableAlert', ({
+      EventBus.$on('showDismissableAlert', ({
           content = undefined,
           variant = 'info'
         }) => {
