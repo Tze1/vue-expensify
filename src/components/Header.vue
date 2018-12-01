@@ -10,11 +10,13 @@
       <img :src="getAvatarUrl()" class="avatar"/>
       <button @click="startLogout" class="button logout-btn exit">Log out</button>
     </div>
+    <DismissableAlert />
   </header>
 </template>
 
 <script>
   import { mapState } from 'vuex';
+  import DismissableAlert from './DismissableAlert';
 
   export default {
     name: 'Header',
@@ -40,7 +42,10 @@
           this.user.photoURL :
           '/img/avatar-default.png';
       },
-    }
+    },
+    components: {
+      DismissableAlert,
+    },
   };
 </script>
 
@@ -70,7 +75,7 @@
         padding-top: 0;
       }
 
-      &:last-child {
+      &.auth {
         align-self: flex-end;
         padding-bottom: 0;
         padding-right: 0;
@@ -80,7 +85,7 @@
       @include mq("tablet") {
         padding: 0 $space-sm;
 
-        &:last-child {
+        &.auth {
           align-self: initial;
         }
       }
