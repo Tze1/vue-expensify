@@ -82,6 +82,10 @@
         text-align: right;
       }
 
+      &.dismissablealert.component {
+        padding: 0.75rem 1.25rem;
+      }
+
       @include mq("tablet") {
         padding: 0 $space-sm;
 

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <b-alert
       :show="dismissCountDown"
       :variant="variant"
@@ -11,7 +10,6 @@
       <button @click="dismissCountDown=0" class="close">x</button>
       <h4>{{ content }}</h4>
     </b-alert>
-  </div>
 </template>
 
 <script>
@@ -71,7 +69,8 @@
 
   .dismissablealert.component {
     animation: strobeShadow 1s ease-in-out;
-    animation-iteration-count: infinite; 
+    animation-iteration-count: infinite;
+    padding: 0.75rem 1.25rem;
     position: absolute;
     width: auto;
     max-width: 80%;
