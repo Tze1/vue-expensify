@@ -1,5 +1,14 @@
 // overrides for 3rd-party widgets/plugins/components
+$icon-font-path: '/fonts/';
+
 #app {
+  //open-iconic
+  .oi {
+    color: $white;
+    cursor: pointer;
+  }
+
+  // vue-datepicker
   .vdp-datepicker {
     color: $black;
     min-width: 7.5rem;
