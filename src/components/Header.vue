@@ -8,7 +8,13 @@
     <div v-if="user" class="auth">
       <span class="username">{{ user ? user.displayName : '' }}</span>
       <img :src="getAvatarUrl()" class="avatar"/>
-      <button @click="startLogout" class="button logout-btn exit">Log out</button>
+      <button
+        @click="startLogout"
+        aria-label="Log Out"
+        class="logout-btn"
+      >
+        <span class="oi oi-account-logout" title="Log out" aria-hidden="true"></span>
+      </button>
     </div>
     <DismissableAlert />
   </header>
@@ -166,9 +172,17 @@
         width: 2rem;
       }
 
-      .button.exit {
+      .logout-btn {
+        background: none;
+        border: none;
         margin-right: 0;
-        width: auto;
+        padding: 0;
+
+        .oi-account-logout {
+          font-size: $font-size-xl;
+          line-height: $font-size-xl;
+          vertical-align: middle;
+        }
       }
     } // .auth
   }  // header
