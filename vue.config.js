@@ -14,6 +14,19 @@ module.exports = {
     }
   },
   configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.(ttf|eot|woff|woff2)(#iconic-sm)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[ext]',
+            },
+          },
+        },
+      ],
+    },
     plugins: [
       new webpack.DefinePlugin({
         'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
