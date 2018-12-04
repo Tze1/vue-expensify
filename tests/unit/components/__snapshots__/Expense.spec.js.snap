@@ -3,7 +3,11 @@
 exports[`Expense.vue renders Expense component properly 1`] = `
 <div class="expense component">
   <div class="expense-wrapper"><span class="expense-createdat">12/31/1969</span> <span class="expense-description">Gum</span> <span class="expense-amount">$1.95</span>
-    <router-link-stub to="/edit/1" arie-label="Edit Expense" class="expense-edit"><span title="Edit Expense" aria-hidden="true" class="oi oi-pencil"></span></router-link-stub> <button aria-label="Remove Expense" class="expense-remove"><span title="Remove Expense" aria-hidden="true" class="oi oi-trash"></span></button></div>
+    <router-link-stub to="/edit/1" arie-label="Edit Expense" class="expense-edit">
+      <font-awesome-icon icon="edit"></font-awesome-icon>
+    </router-link-stub> <button aria-label="Remove Expense" class="expense-remove">
+      <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+    </button></div>
   <b-modal-stub title="Confirm Remove" titletag="h5" size="md" centered="true" buttonsize="" nocloseonbackdrop="true" hideheaderclose="true" headercloselabel="Close" canceltitle="Cancel" oktitle="Yes, remove" cancelvariant="secondary" okvariant="danger" class="expense-confirm">
     <p class="confirm-message">Are you sure? Removing cannot be undone.</p>
   </b-modal-stub>

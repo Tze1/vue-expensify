@@ -4,11 +4,11 @@
       <span class="expense-createdat">{{ createdAtDisplay }}</span>
       <span class="expense-description">{{ expense.description }}</span>
       <span class="expense-amount">{{ amountDisplay }}</span>
-      <router-link :to="editExpenseLink" arie-label="Edit Expense" class="expense-edit">
-        <span title="Edit Expense" aria-hidden="true" class="oi oi-pencil"></span>
+      <router-link :to="editExpenseLink" title="Edit Expense" aria-label="Edit Expense" class="expense-edit">
+        <font-awesome-icon icon="edit" />
       </router-link>
-      <button @click="onRemove" aria-label="Remove Expense" class="expense-remove">
-        <span title="Remove Expense" aria-hidden="true" class="oi oi-trash"></span>
+      <button @click="onRemove" title="Remove Expense" aria-label="Remove Expense" class="expense-remove">
+        <font-awesome-icon icon="trash-alt" />
       </button>
     </div>
     <b-modal
@@ -32,6 +32,10 @@
   import bModalDirective from 'bootstrap-vue/es/directives/modal/modal';
   import moment from 'moment';
   import numeral from 'numeral';
+  import { library } from '@fortawesome/fontawesome-svg-core';
+  import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+  library.add(faEdit, faTrashAlt);
 
   export default {
     name: 'Expense',
@@ -117,33 +121,32 @@
         }
       } // > *
 
+      .expense-amount {
+        margin-right: $space-xs;
+      }
+
       .expense-edit {
         background: none;
         border: none;
 
-        .oi-pencil {
-          &::before {
-            color: $green;
-          }
-          &:hover::before {
-            color: lighten($green, 25%);
-          }
+        .svg-inline--fa {
+          color: inherit;
         }
       }
 
       .expense-remove {
         background: none;
         border: none;
+        color: $orange;
+        font-size: 1rem;
 
-        .oi-trash {
-          &::before {
-            color: $orange;
-          }
+        &:hover {
+          color: lighten($orange, 25%);
+        }
 
-          &:hover::before {
-            color: lighten($orange, 25%);
-          }
-        } // .oi-trash
+        .svg-inline--fa {
+          color: inherit;
+        }
 
       } // .expense-remove
     } // .expense-wrapper
