@@ -1,12 +1,13 @@
 // overrides for 3rd-party widgets/plugins/components
-$icon-font-path: '/fonts/';
+
+// vue-fontawesome
+.svg-inline--fa {
+  color: $white;
+  cursor: pointer;
+}
 
 #app {
   //open-iconic
-  .oi {
-    color: $white;
-    cursor: pointer;
-  }
 
   // vue-datepicker
   .vdp-datepicker {

@@ -11,9 +11,10 @@
       <button
         @click="startLogout"
         aria-label="Log Out"
+        title="Log Out"
         class="logout-btn"
       >
-        <span class="oi oi-account-logout" title="Log out" aria-hidden="true"></span>
+        <font-awesome-icon icon="sign-out-alt" />
       </button>
     </div>
     <DismissableAlert />
@@ -23,6 +24,10 @@
 <script>
   import { mapState } from 'vuex';
   import DismissableAlert from './DismissableAlert';
+  import { library } from '@fortawesome/fontawesome-svg-core';
+  import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
+  library.add(faSignOutAlt);
 
   export default {
     name: 'Header',
@@ -175,13 +180,18 @@
       .logout-btn {
         background: none;
         border: none;
+        font-size: $font-size-xl;
+        line-height: $font-size-xl;
         margin-right: 0;
         padding: 0;
 
-        .oi-account-logout {
-          font-size: $font-size-xl;
-          line-height: $font-size-xl;
+        > .svg-inline--fa {
+          color: $gray4;
           vertical-align: middle;
+
+          &:hover {
+            color: $white;
+          }
         }
       }
     } // .auth
