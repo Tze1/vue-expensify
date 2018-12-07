@@ -24,7 +24,8 @@ describe('Header.vue', () => {
       $store,
     },
     stubs: [
-      'router-link'
+      'router-link',
+      'font-awesome-icon',
     ],
     propsData: {
       appTitle,
