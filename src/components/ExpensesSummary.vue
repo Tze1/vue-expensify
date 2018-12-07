@@ -1,10 +1,14 @@
 <template>
   <div class="expensessummary component">
     <p>
-      <span class="expensessummary-showing">Showing&nbsp;</span>
-      <span class="expensessummary-count">{{ expensesCount }}</span>&nbsp;expense(s)
-      <span v-if="expensesFiltered" class="expensessummary-filtered">(filtered)&nbsp;</span>&nbsp;totalling
+      <span class="expensessummary-count">{{ expensesCount }}</span>&nbsp;expense(s)&nbsp;
+      <span v-if="expensesFiltered" class="expensessummary-filtered">
+        (filtered)&nbsp;
+      </span>totalling&nbsp;
       <span class="expensessummary-amount">{{ expensesSum }}</span>
+      <span v-if="expensesFiltered" class="expensessummary-hiddencount">
+        &nbsp;[{{ hiddenCount }} hidden]
+      </span>
     </p>
   </div>
 </template>
@@ -25,6 +29,9 @@
       expensesSum () {
         return numeral(this.$store.getters.filteredSum / 100).format('$0,0.00');
       },
+      hiddenCount() {
+        return this.$store.getters.totalCount - this.$store.getters.filteredCount;
+      },
     }),
   };
 </script>
@@ -37,14 +44,6 @@
       font-size: $font-size-sm;
       margin-bottom: $space-sm;
       margin-top: $space-xs;
-
-      .expensessummary-showing {
-        display: none;
-
-        @include mq("tablet") {
-          display: inline;
-        }
-      }
 
       .expensessummary-count,
       .expensessummary-amount {
