@@ -1,4 +1,4 @@
-import { shallowMount, mount, createLocalVue, RouteLinkStub } from '@vue/test-utils';
+import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import testExpenses from '../../fixtures/testExpenses';
@@ -32,7 +32,10 @@ describe('Expense.vue', () => {
   const testExpense = testExpenses[0];
   const testEditLinkPath = '/edit/' + testExpenses[0].id;
   const wrapper = shallowMount(Expense, {
-    stubs: [ 'router-link' ],
+    stubs: [
+      'router-link',
+      'font-awesome-icon'
+    ],
     propsData: {
       expense: testExpense,
     },
@@ -49,7 +52,10 @@ describe('Expense.vue', () => {
 
   it('displays confirm-modal on remove-button click', () => {
     const wrapper = mount(Expense, {
-    stubs: [ 'router-link' ],
+      stubs: [
+        'router-link',
+        'font-awesome-icon',
+      ],
       mocks: {
         $store,
         $router,
@@ -77,7 +83,10 @@ describe('Expense.vue', () => {
 
   it('hides confirm-modal on modal-cancel-button click', () => {
     const wrapper = mount(Expense, {
-    stubs: [ 'router-link' ],
+      stubs: [
+        'router-link',
+        'font-awesome-icon'
+      ],
       mocks: {
         $store,
         $router,
@@ -106,7 +115,10 @@ describe('Expense.vue', () => {
     const id = $route.params.id;
     const wrapper = mount(Expense, {
       localVue,
-    stubs: [ 'router-link' ],
+      stubs: [
+        'router-link',
+        'font-awesome-icon'
+      ],
       mocks: {
         $store,
         $router,

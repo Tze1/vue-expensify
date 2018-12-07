@@ -43,6 +43,9 @@ export default {
       const reducer = (sum, currValue) => sum + currValue;
       
       return fltrdAmounts.reduce(reducer, 0);
+    },
+    totalCount: (state, getters) => {
+      return state.length - getters.filteredCount;
     }
   },
 
