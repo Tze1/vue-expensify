@@ -45,7 +45,7 @@ export default {
       return fltrdAmounts.reduce(reducer, 0);
     },
     totalCount: (state, getters) => {
-      return state.length - getters.filteredCount;
+      return state.length;
     }
   },
 
