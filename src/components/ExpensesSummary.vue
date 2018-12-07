@@ -2,11 +2,11 @@
   <div class="expensessummary component">
     <p>
       <span class="expensessummary-count">{{ expensesCount }}</span>&nbsp;expense(s)&nbsp;
-      <span v-if="expensesFiltered" class="expensessummary-filtered">
+      <span v-if="hiddenCount" class="expensessummary-filtered">
         (filtered)&nbsp;
       </span>totalling&nbsp;
       <span class="expensessummary-amount">{{ expensesSum }}</span>
-      <span v-if="expensesFiltered" class="expensessummary-hiddencount">
+      <span v-if="hiddenCount" class="expensessummary-hiddencount">
         &nbsp;[{{ hiddenCount }} hidden]
       </span>
     </p>
@@ -20,9 +20,6 @@
   export default {
     name: 'ExpensesSummary',
     computed: mapState({
-      expensesFiltered () {
-        return this.$store.getters.expensesFiltered;
-      },
       expensesCount () {
         return this.$store.getters.filteredCount;
       },
