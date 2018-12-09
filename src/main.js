@@ -4,8 +4,12 @@ import App from './App.vue';
 import router from './router';
 import store from './store/store';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  faEdit,
+  faSignOutAlt,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 // Add all icons here for entire app.
 /* eslint-disable no-undef */
