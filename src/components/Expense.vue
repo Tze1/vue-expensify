@@ -32,10 +32,6 @@
   import bModalDirective from 'bootstrap-vue/es/directives/modal/modal';
   import moment from 'moment';
   import numeral from 'numeral';
-  import { library } from '@fortawesome/fontawesome-svg-core';
-  import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-
-  library.add(faEdit, faTrashAlt);
 
   export default {
     name: 'Expense',

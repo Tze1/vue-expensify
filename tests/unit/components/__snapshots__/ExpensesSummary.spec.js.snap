@@ -3,11 +3,9 @@
 exports[`ExpensesSummary renders ExpensesSummary component properly 1`] = `
 <div class="expensessummary component">
   <p><span class="expensessummary-count"></span>&nbsp;expense(s)&nbsp;
-    <span class="expensessummary-filtered">
-      (filtered)&nbsp;
-    </span>totalling&nbsp;
-    <span class="expensessummary-amount">$0.00</span> <span class="expensessummary-hiddencount">
-      &nbsp;[NaN hidden]
-    </span></p>
+    <!---->totalling&nbsp;
+    <span class="expensessummary-amount">$0.00</span>
+    <!---->
+  </p>
 </div>
 `;

@@ -24,10 +24,6 @@
 <script>
   import { mapState } from 'vuex';
   import DismissableAlert from './DismissableAlert';
-  import { library } from '@fortawesome/fontawesome-svg-core';
-  import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-
-  library.add(faSignOutAlt);
 
   export default {
     name: 'Header',

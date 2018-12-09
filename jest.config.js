@@ -15,6 +15,7 @@ module.exports = {
   },
   transformIgnorePatterns: [
     'node_modules/(?!(bootstrap-vue)/)', // fix SyntaxError: Unexpected token import
+    'node_modules/(?!(@fortawesome)/)/', // fix SyntaxError: Unexpected token import
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
